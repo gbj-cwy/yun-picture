@@ -3,6 +3,7 @@ package com.yys.web.utils;
 import org.redisson.api.RScoredSortedSet;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @description
  * @date 2025/8/26 17:20
  */
+@Component
 public class RateLimiterUtil {
 
     @Autowired

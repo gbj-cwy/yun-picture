@@ -6,10 +6,14 @@ spring:
     url: jdbc:mysql://localhost:3306/yun_picture?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  redis:
+    host: 192.168.255.180
+    port: 6379
+    database: 0
 server:
   port: 9090
   servlet:
-    context-path: /api
+    context-path: /picture
 
 wx:
   customer:
@@ -17,6 +21,7 @@ wx:
     secret: secret
 
 mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
@@ -26,15 +31,20 @@ mybatis-plus:
       logic-not-delete-value: 0
 
 # 接口文档配置
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  group-configs:
+    - group: default
+      packages-to-scan: com.yys.yunpicture.demos.web.controller
+
 knife4j:
   enable: true
-  openapi:
-    title: "接口文档"
-    version: 1.0
-    group:
-      default:
-        api-rule: package
-        api-rule-resources:
-          - com.yys.yunpicture.demos.web.controller
+  setting:
+    language: zh_cn
 
 

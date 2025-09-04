@@ -13,6 +13,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 
@@ -33,9 +34,9 @@ public class RateLimitAspect {
 
     private final HttpServletRequest request;
 
-    private final ExpressionParser parser;
+    // private final ExpressionParser parser;
 
-    @Around("@annotation(RateLimit)")
+    @Around("@annotation(com.yys.web.common.annotation.RateLimit)")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         // 方法签名
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -54,6 +55,7 @@ public class RateLimitAspect {
             for (int i = 0; i < parameterNames.length; i++) {
                 context.setVariable(parameterNames[i], args[i]);
             }
+            ExpressionParser parser = new SpelExpressionParser();
             key = parser.parseExpression(key).getValue(context, String.class);
         }
 
