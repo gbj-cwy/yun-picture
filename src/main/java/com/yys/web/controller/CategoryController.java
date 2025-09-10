@@ -29,7 +29,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/category")
-@Tag(name = "分类管理")
+@Tag(name = "分类管理", description = "分类管理接口")
 public class CategoryController {
 
     @Autowired

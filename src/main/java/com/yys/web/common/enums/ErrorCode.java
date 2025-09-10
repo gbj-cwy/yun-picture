@@ -13,7 +13,9 @@ public enum ErrorCode {
     FORBIDDEN_ERROR(40300, "禁止访问"),
     SYSTEM_ERROR(50000, "系统内部异常"),
     OPERATION_ERROR(50001, "操作失败"),
-    FREQUENT_VISIT(50002, "访问过于频繁，请稍后再试")
+    FREQUENT_VISIT(50002, "访问过于频繁，请稍后再试"),
+    FILE_UPLOAD_ERROR(50010, "文件上传失败"),
+    FILE_DOWNLOAD_ERROR(50011, "文件下载失败"),
     ;
 
     /**
